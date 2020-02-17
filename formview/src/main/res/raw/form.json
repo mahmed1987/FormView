@@ -1,0 +1,78 @@
+{
+  "Padding": 10,
+  "Title": "Enter Site Details",
+  "Rows": [
+    {
+      "Fields": [
+        {
+          "Type": "TextField",
+          "Tag": "Name",
+          "Hint": "Name",
+          "Text": "Ahmed",
+          "Weight": 5,
+          "ValidationRule": {
+            "Mandatory": true
+          }
+        },
+        {
+          "Type": "TextField",
+          "Tag": "Age",
+          "Hint": "Age",
+          "Text": "5",
+          "Weight": 5,
+          "InputType": "Number",
+          "ValidationRule": {
+            "Mandatory": true,
+            "MinValue": 102,
+            "MaxValue": 5555,
+            "MinLength": 3,
+            "MaxLength": 4
+          }
+        }
+      ]
+    },
+    {
+      "Fields": [
+        {
+          "Type": "TextField",
+          "Tag": "country",
+          "Hint": "Country",
+          "Text": "Pakistan"
+        }
+      ]
+    },
+    {
+      "Fields": [
+        {
+          "Type": "TextField",
+          "Tag": "address",
+          "Hint": "Address",
+          "Text": "FbArea"
+        }
+      ]
+    },
+    {
+      "Fields": [
+        {
+          "Type": "DropDown",
+          "Tag": "countryDropDown",
+          "Hint": "Country"
+        }
+      ]
+    },
+    {
+      "Fields": [
+        {
+          "Type": "SubmitButtonField",
+          "Hint": "hint",
+          "Text": "Submit",
+          "LayoutParam": {
+            "Gravity": "Right",
+            "Width": "WrapContent",
+            "Margins": "10,20,30,40"
+          }
+        }
+      ]
+    }
+  ]
+}

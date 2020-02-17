@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="unit_small">3dp</dimen>
+    <dimen name="unit_medium">7dp</dimen>
+    <dimen name="unit_large">15dp</dimen>
+    <dimen name="unit_xlarge">25dp</dimen>
+
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="button_corner_radius">10dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+
+    <dimen name="circle_size_small">50dp</dimen>
+    <dimen name="circle_size_medium">70dp</dimen>
+    <dimen name="circle_size_large">90dp</dimen>
+
+    <dimen name="bottom_bar_margin">24dp</dimen>
+    <dimen name="span_barrier_break_distance">30dp</dimen>
+    <dimen name="divider_space_medium">10dp</dimen>
+    <dimen name="divider_space_small">7dp</dimen>
+
+
+</resources>

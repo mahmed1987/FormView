@@ -1,0 +1,79 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+
+
+
+    <style name="TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+
+    <style name="TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/googlesans_medium</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/googlesans_medium</item>
+    </style>
+
+    <style name="TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/googlesans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/googlesans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/googlesans_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+    <style name="TextAppearance.Error" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/googlesans_bold</item>
+    </style>
+
+    <style name="ShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">3dp</item>
+    </style>
+
+    <style name="FormView" >
+    </style>
+    <style name="TitleStyle" parent="FormView">
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:padding">@dimen/unit_medium</item>
+        <item name="android:textAppearance">@style/TextAppearance.Headline6</item>
+    </style>
+
+
+
+
+
+
+
+
+
+</resources>
