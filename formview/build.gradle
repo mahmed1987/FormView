@@ -42,4 +42,5 @@ dependencies {
     implementation "org.koin:koin-android:2.0.1"
     implementation "org.koin:koin-androidx-scope:2.0.1"
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
 }

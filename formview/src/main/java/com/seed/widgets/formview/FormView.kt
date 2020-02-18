@@ -17,6 +17,7 @@ import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
@@ -39,6 +40,7 @@ class FormView @JvmOverloads constructor(
 
     var smallSpace = 0
     var mediumSpace = 0
+    var navHostFragmentId = 0
     var largeSpace = 0
     var formHasErrors = false
     var formResource: Int? = null
@@ -66,7 +68,19 @@ class FormView @JvmOverloads constructor(
     }
 
     private fun attachCallbacks(): FormCallbacks? {
-
+        if (navHostFragmentId != 0) {
+            val activity = context as AppCompatActivity
+            val navHostFragment =
+                activity.supportFragmentManager.findFragmentById(navHostFragmentId)
+            if (navHostFragment != null) {
+                return when (navHostFragment) {
+                    is NavHostFragment -> navHostFragment.childFragmentManager.primaryNavigationFragment
+                    else -> navHostFragment
+                } as FormCallbacks
+            } else {
+                throw IllegalStateException("Nav Host Fragment was not found. Are you sure you are providing the correct id?")
+            }
+        }
         return when (context) {
             is AppCompatActivity -> (context as AppCompatActivity) as FormCallbacks
             is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity) as FormCallbacks
@@ -78,6 +92,7 @@ class FormView @JvmOverloads constructor(
     private fun studyAttributes(context: Context, it: AttributeSet) {
         val typedArray = context.theme.obtainStyledAttributes(it, R.styleable.FormView, 0, 0)
         formResource = typedArray.getResourceId(R.styleable.FormView_form, R.raw.form)
+        navHostFragmentId = typedArray.getResourceId(R.styleable.FormView_navHostFragmentId, 0)
     }
 
     private fun designCard(context: Context) {
