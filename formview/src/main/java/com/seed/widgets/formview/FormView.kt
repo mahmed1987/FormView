@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.*
+import androidx.core.view.children
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
@@ -64,7 +65,14 @@ class FormView @JvmOverloads constructor(
 
     }
 
-    private fun attachCallbacks()=(context as AppCompatActivity) as FormCallbacks
+    private fun attachCallbacks(): FormCallbacks? {
+
+        return when (context) {
+            is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity) as FormCallbacks
+            is AppCompatActivity -> (context as AppCompatActivity) as FormCallbacks
+            else -> null
+        }
+    }
 
 
     private fun studyAttributes(context: Context, it: AttributeSet) {
@@ -371,8 +379,7 @@ class FormView @JvmOverloads constructor(
     }
 
     //region Extensions
-    fun Int.toPx() :Int
-    {
+    fun Int.toPx(): Int {
         val metrics = Resources.getSystem().displayMetrics
 
         return (this * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)).toInt()
@@ -380,30 +387,28 @@ class FormView @JvmOverloads constructor(
 
     fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
         LayoutInflater.from(context).inflate(layoutRes, this, false)
+
     fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-        this.addTextChangedListener(object: TextWatcher {
+        this.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 afterTextChanged.invoke(s.toString())
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
 
     fun EditText.validate(message: String, validator: (String) -> Boolean) {
 
-        if (this.parent.parent is TextInputLayout)
-        {
+        if (this.parent.parent is TextInputLayout) {
             val parent = this.parent.parent as TextInputLayout
             this.afterTextChanged {
                 parent.error = if (validator(it)) null else message
             }
             parent.error = if (validator(this.text.toString())) null else message
-        }
-        else
-        {
+        } else {
             this.afterTextChanged {
                 this.error = if (validator(it)) null else message
             }
@@ -411,6 +416,7 @@ class FormView @JvmOverloads constructor(
         }
 
     }
+
     fun View.visible() {
         this.visibility = View.VISIBLE
     }

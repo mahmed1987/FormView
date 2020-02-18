@@ -11,8 +11,24 @@
         <item name="colorOnSurface">@color/colorOnSurface</item>
         <item name="android:colorBackground">@color/colorBackground</item>
     </style>
-    <style name="TitleStyle.AppTheme" parent="TitleStyle">
-        <item name="android:textColor">@color/colorSurface</item>
+
+    <style name="NewTitleStyle" parent="@style/TitleStyle" >
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:padding">@dimen/unit_medium</item>
+        <item name="android:textAppearance">@style/TextAppearance.Headline6</item>
     </style>
+
+
+    <style name="FormViewTheme">
+        <item name="titleStyle">@style/NewTitleStyle</item>
+    </style>
+
+
+    <style name="ThemeOverLayForm" parent="@style/ThemeOverlay.MaterialComponents">
+        <item name="colorSurface">#fff</item>
+    </style>
+
+
 
 </resources>

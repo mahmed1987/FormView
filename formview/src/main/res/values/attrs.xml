@@ -5,4 +5,6 @@
         <attr name="form" format="reference"/>
         <attr name="regionIcon" format="reference"/>
     </declare-styleable>
+
+    <attr name="titleStyle" format="reference" />
 </resources>

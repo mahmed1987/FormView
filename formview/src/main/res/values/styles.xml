@@ -1,8 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 
-
-
+    <style name="FormViewTheme">
+        <item name="titleStyle">@style/TitleStyle</item>
+    </style>
 
     <style name="TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="fontFamily">@font/googlesans_bold</item>
@@ -49,6 +50,7 @@
     <style name="TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/googlesans_bold</item>
     </style>
+
     <style name="TextAppearance.Error" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/googlesans_bold</item>
     </style>
@@ -58,22 +60,15 @@
         <item name="cornerSize">3dp</item>
     </style>
 
-    <style name="FormView" >
-    </style>
-    <style name="TitleStyle" parent="FormView">
+    <style name="FormView"></style>
+
+    <style name="TitleStyle">
         <item name="android:fontFamily">@font/googlesans_bold</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:backgroundTint">?attr/colorPrimary</item>
         <item name="android:padding">@dimen/unit_medium</item>
-        <item name="android:textAppearance">@style/TextAppearance.Headline6</item>
+        <item name="android:textAppearance">@style/TextAppearance.Headline3</item>
     </style>
-
-
-
-
-
-
-
 
 
 </resources>
