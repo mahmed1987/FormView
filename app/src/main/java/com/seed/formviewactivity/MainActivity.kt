@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity(), FormView.FormCallbacks {
     override suspend fun requestData(tag: String): List<Pair<String, String>> {
         return when (tag) {
             "country" -> {
-                6
                 delay(1000)
                 listOf(
                     Pair("1", "United States"),

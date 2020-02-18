@@ -150,7 +150,15 @@ class FormView @JvmOverloads constructor(
             addLayoutParams(mediumSpace, field.weight)
 
             field.inputType?.let {
-                editText.inputType = it.value
+                editText.inputType = when (it) {
+                    InputType.TYPE_CLASS_NUMBER -> android.text.InputType.TYPE_CLASS_NUMBER
+                    InputType.TYPE_CLASS_PHONE -> android.text.InputType.TYPE_CLASS_PHONE
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD -> {
+                        this@apply.isPasswordVisibilityToggleEnabled = true
+                        android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+                    }
+                }
 
             }
             field.validationRule?.let { validationRule ->

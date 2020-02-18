@@ -26,7 +26,7 @@ enum class Type {
     @SerializedName("DropDown")
     DROPDOWN,
     @SerializedName("SubmitButtonField")
-    SUBMIT_BUTTON_FIELD
+    SUBMIT_BUTTON_FIELD,
 }
 
 enum class Width {

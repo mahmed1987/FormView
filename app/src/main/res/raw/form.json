@@ -39,7 +39,8 @@
           "Type": "TextField",
           "Tag": "hobbies",
           "Hint": "Hobbies",
-          "Text": "Pakistan"
+          "Text": "Pakistan",
+          "InputType": "Password"
         }
       ]
     },
