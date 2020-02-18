@@ -6,7 +6,7 @@
       "Fields": [
         {
           "Type": "TextField",
-          "Tag": "Name",
+          "Tag": "name",
           "Hint": "Name",
           "Text": "Ahmed",
           "Weight": 5,
@@ -35,8 +35,8 @@
       "Fields": [
         {
           "Type": "TextField",
-          "Tag": "country",
-          "Hint": "Country",
+          "Tag": "hobbies",
+          "Hint": "Hobbies",
           "Text": "Pakistan"
         }
       ]
@@ -55,7 +55,7 @@
       "Fields": [
         {
           "Type": "DropDown",
-          "Tag": "countryDropDown",
+          "Tag": "country",
           "Hint": "Country"
         }
       ]
