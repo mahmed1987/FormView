@@ -5,7 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:theme="@style/FormViewTheme">
 
@@ -15,22 +15,26 @@
             style="?titleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:text="ahmed"
+            app:layout_constraintBottom_toTopOf="@+id/formContainer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <LinearLayout
             android:id="@+id/formContainer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="411dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formTitle"
-            app:layout_constraintVertical_bias="0.6"></LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/formTitle"></LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
