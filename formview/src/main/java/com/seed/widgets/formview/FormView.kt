@@ -286,7 +286,7 @@ class FormView @JvmOverloads constructor(
         field: Field
     ) {
 
-        val errorMandatory = "${field.tag} is mandatory"
+        val errorMandatory = "${field.name} is mandatory"
 
         val lengthSatisfied = maxMinLengthSatisfied(validationRule, value, field)
         if (lengthSatisfied != null)
@@ -331,13 +331,13 @@ class FormView @JvmOverloads constructor(
             validationRule.maxValue != 0 -> {
                 val range = IntRange(validationRule.minValue, validationRule.maxValue)
                 if (value.toInt() !in range)
-                    "${field.tag} should be between  ${validationRule.minValue} and ${validationRule.maxValue}"
+                    "${field.name} should be between  ${validationRule.minValue} and ${validationRule.maxValue}"
                 else
                     null
             }
             validationRule.minValue > 0 -> {
                 if (value.toInt() < validationRule.minValue)
-                    "${field.tag} cannot be less than  ${validationRule.minValue}"
+                    "${field.name} cannot be less than  ${validationRule.minValue}"
                 else
                     null
             }
@@ -355,13 +355,13 @@ class FormView @JvmOverloads constructor(
             validationRule.maxLength != 0 -> {
                 val range = IntRange(validationRule.minLength, validationRule.maxLength)
                 if (value.length !in range)
-                    "${field.tag} should have characters between ${validationRule.minLength} and ${validationRule.maxLength}"
+                    "${field.name} should have characters between ${validationRule.minLength} and ${validationRule.maxLength}"
                 else
                     null
             }
             validationRule.minLength > 0 -> {
                 if (value.length < validationRule.minLength)
-                    "${field.tag} should have more characters than  ${validationRule.minLength}"
+                    "${field.name} should have more characters than  ${validationRule.minLength}"
                 else
                     null
             }

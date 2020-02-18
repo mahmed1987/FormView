@@ -8,6 +8,7 @@
           "Type": "TextField",
           "Tag": "name",
           "Hint": "Name",
+          "Name": "Name",
           "Text": "Ahmed",
           "Weight": 5,
           "ValidationRule": {
@@ -18,6 +19,7 @@
           "Type": "TextField",
           "Tag": "Age",
           "Hint": "Age",
+          "Name": "Age",
           "Text": "5",
           "Weight": 5,
           "InputType": "Number",
