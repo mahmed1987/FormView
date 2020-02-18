@@ -68,24 +68,29 @@ class FormView @JvmOverloads constructor(
     }
 
     private fun attachCallbacks(): FormCallbacks? {
-        if (navHostFragmentId != 0) {
-            val activity = context as AppCompatActivity
-            val navHostFragment =
-                activity.supportFragmentManager.findFragmentById(navHostFragmentId)
-            if (navHostFragment != null) {
-                return when (navHostFragment) {
-                    is NavHostFragment -> navHostFragment.childFragmentManager.primaryNavigationFragment
-                    else -> navHostFragment
-                } as FormCallbacks
-            } else {
-                throw IllegalStateException("Nav Host Fragment was not found. Are you sure you are providing the correct id?")
-            }
-        }
-        return when (context) {
-            is AppCompatActivity -> (context as AppCompatActivity) as FormCallbacks
-            is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity) as FormCallbacks
+        val ctx= when (context) {
+            is AppCompatActivity -> (context as AppCompatActivity)
+            is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity)
             else -> null
         }
+      return  ctx?.let {
+            if (navHostFragmentId != 0) {
+                val fragment =
+                    it.supportFragmentManager.findFragmentById(navHostFragmentId)
+                if (fragment != null) {
+                    return when (fragment) {
+                        is NavHostFragment -> fragment.childFragmentManager.primaryNavigationFragment
+                        else -> fragment
+                    } as FormCallbacks
+                } else {
+                    throw IllegalStateException("Nav Host Fragment was not found. Are you sure you are providing the correct id?")
+                }
+            }
+            it as FormCallbacks
+        }
+
+
+
     }
 
 
