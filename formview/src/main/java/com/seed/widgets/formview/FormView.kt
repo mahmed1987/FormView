@@ -68,8 +68,8 @@ class FormView @JvmOverloads constructor(
     private fun attachCallbacks(): FormCallbacks? {
 
         return when (context) {
-            is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity) as FormCallbacks
             is AppCompatActivity -> (context as AppCompatActivity) as FormCallbacks
+            is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity) as FormCallbacks
             else -> null
         }
     }
