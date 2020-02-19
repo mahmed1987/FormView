@@ -1,4 +1,3 @@
 # FormView
 Create a simple (read modern) form at light speed
-
-![Image of Yaktocat](https://drive.google.com/open?id=1WaqZyydLJWHzbcrYOtXgsTPLiYxpp01o)
+https://medium.com/@muhammadahmedabutalib/create-android-forms-at-light-speed-2819b4e60bde
