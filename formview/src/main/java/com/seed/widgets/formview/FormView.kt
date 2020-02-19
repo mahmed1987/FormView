@@ -44,6 +44,8 @@ class FormView @JvmOverloads constructor(
     var largeSpace = 0
     var formHasErrors = false
     var formResource: Int? = null
+    var textFieldResource: Int = 0
+    var submitButtonFieldResource: Int = 0
     val callbacks: FormCallbacks by lazy { attachCallbacks() as FormCallbacks }
     val coroutineContext = CoroutineScope(Dispatchers.IO + Job())
     lateinit var form: Form
@@ -68,12 +70,12 @@ class FormView @JvmOverloads constructor(
     }
 
     private fun attachCallbacks(): FormCallbacks? {
-        val ctx= when (context) {
+        val ctx = when (context) {
             is AppCompatActivity -> (context as AppCompatActivity)
             is ContextThemeWrapper -> (((context as ContextThemeWrapper).baseContext) as AppCompatActivity)
             else -> null
         }
-      return  ctx?.let {
+        return ctx?.let {
             if (navHostFragmentId != 0) {
                 val fragment =
                     it.supportFragmentManager.findFragmentById(navHostFragmentId)
@@ -90,7 +92,6 @@ class FormView @JvmOverloads constructor(
         }
 
 
-
     }
 
 
@@ -98,6 +99,9 @@ class FormView @JvmOverloads constructor(
         val typedArray = context.theme.obtainStyledAttributes(it, R.styleable.FormView, 0, 0)
         formResource = typedArray.getResourceId(R.styleable.FormView_form, R.raw.form)
         navHostFragmentId = typedArray.getResourceId(R.styleable.FormView_navHostFragmentId, 0)
+        textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
+        submitButtonFieldResource = typedArray.getResourceId(R.styleable.FormView_submitButton, 0)
+
     }
 
     private fun designCard(context: Context) {
@@ -163,8 +167,10 @@ class FormView @JvmOverloads constructor(
     //endregion
     //region TextField
     private fun createTextField(field: Field) =
-        (inflate(R.layout.form_textfield) as TextInputLayout).apply {
+        (inflate(if (textFieldResource != 0) textFieldResource else R.layout.form_textfield) as TextInputLayout).apply {
             val editText = this@apply.findViewById<EditText>(R.id.editText)
+                ?: throw IllegalStateException("Your custom text field resource should have the TextInputEditText id as editText")
+
             hint = field.hint
             field.tag?.let { tag = it }
             addLayoutParams(mediumSpace, field.weight)
@@ -232,7 +238,7 @@ class FormView @JvmOverloads constructor(
     //endregion
     //region SubmitButtonField
     private fun createSubmitButtonField(field: Field) =
-        (inflate(R.layout.form_button) as MaterialButton).apply {
+        (inflate(if (submitButtonFieldResource != 0) submitButtonFieldResource else R.layout.form_button) as MaterialButton).apply {
             hint = field.hint
             setOnClickListener {
                 val result = produceResult()

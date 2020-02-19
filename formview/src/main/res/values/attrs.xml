@@ -3,7 +3,10 @@
     <declare-styleable name="FormView">
         <attr name="form" format="reference"/>
         <attr name="navHostFragmentId" format="reference"/>
+        <attr name="textfield" format="reference"/>
+        <attr name="submitButton" format="reference"/>
     </declare-styleable>
 
     <attr name="titleStyle" format="reference" />
+
 </resources>

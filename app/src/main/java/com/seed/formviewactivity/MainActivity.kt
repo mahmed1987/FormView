@@ -2,9 +2,12 @@ package com.seed.formviewactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Toast
+import com.google.android.material.card.MaterialCardView
 import com.seed.widgets.formview.FormView
 import com.seed.widgets.formview.Pair
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity(), FormView.FormCallbacks {
@@ -12,7 +15,9 @@ class MainActivity : AppCompatActivity(), FormView.FormCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
+
 
     override suspend fun requestData(tag: String): List<Pair<String, String>> {
         return when (tag) {
