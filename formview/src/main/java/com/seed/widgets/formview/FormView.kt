@@ -77,6 +77,7 @@ class FormView @JvmOverloads constructor(
         }
         return ctx?.let {
             if (navHostFragmentId != 0) {
+                //look for a formview with the id through all of the the fragments in this activity
                 val fragment =
                     it.supportFragmentManager.findFragmentById(navHostFragmentId)
                 if (fragment != null) {
@@ -177,9 +178,9 @@ class FormView @JvmOverloads constructor(
 
             field.inputType?.let {
                 editText.inputType = when (it) {
-                    InputType.TYPE_CLASS_NUMBER -> android.text.InputType.TYPE_CLASS_NUMBER
-                    InputType.TYPE_CLASS_PHONE -> android.text.InputType.TYPE_CLASS_PHONE
-                    InputType.TYPE_TEXT_VARIATION_PASSWORD -> {
+                    InputType.NUMBER -> android.text.InputType.TYPE_CLASS_NUMBER
+                    InputType.PHONE -> android.text.InputType.TYPE_CLASS_PHONE
+                    InputType.TEXT_PASSWORD -> {
                         this@apply.isPasswordVisibilityToggleEnabled = true
                         android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 
@@ -327,7 +328,7 @@ class FormView @JvmOverloads constructor(
             this.error = lengthSatisfied
         else if (field.inputType != null) {
             when (field.inputType) {
-                InputType.TYPE_CLASS_NUMBER -> {
+                InputType.NUMBER -> {
                     if (value.isInt()) {
                         val valueSatisfied = maxMinValueSatisfied(validationRule, value, field)
                         if (valueSatisfied != null) {
@@ -337,8 +338,8 @@ class FormView @JvmOverloads constructor(
                     } else
                         this.error = null
                 }
-                InputType.TYPE_CLASS_PHONE -> TODO()
-                InputType.TYPE_TEXT_VARIATION_PASSWORD -> {
+                InputType.PHONE -> TODO()
+                InputType.TEXT_PASSWORD -> {
                 }
 
             }

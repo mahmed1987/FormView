@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:id="@+id/editText"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Headline6"
+        android:textAppearance="@style/TextAppearance.Body1"
         />
 </com.google.android.material.textfield.TextInputLayout>

@@ -40,7 +40,7 @@
           "Tag": "hobbies",
           "Hint": "Hobbies",
           "Text": "Pakistan",
-          "InputType": "Password"
+          "InputType": "TextPassword"
         }
       ]
     },
