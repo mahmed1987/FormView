@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:id="@+id/root"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">`
-    <com.seed.widgets.formview.FormView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="16dp"
-        app:textfield="@layout/textfield_form"
-        app:submitButton="@layout/submitbutton_form"
-        android:layout_marginRight="16dp"
-        app:cardCornerRadius="7dp"
-        app:form="@raw/form"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.seed.widgets.formview.FormView>
+    tools:context=".MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:layout_height="match_parent"></FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,17 +38,17 @@ class FormView @JvmOverloads constructor(
 ) : MaterialCardView(context, attributeSet, defStyleAttr), View.OnClickListener {
 
 
-    var smallSpace = 0
-    var mediumSpace = 0
-    var navHostFragmentId = 0
-    var largeSpace = 0
+    private var smallSpace = 0
+    private var mediumSpace = 0
+    private var fragmentId = 0
+    private var largeSpace = 0
     var formHasErrors = false
-    var formResource: Int? = null
-    var textFieldResource: Int = 0
-    var submitButtonFieldResource: Int = 0
-    val callbacks: FormCallbacks by lazy { attachCallbacks() as FormCallbacks }
-    val coroutineContext = CoroutineScope(Dispatchers.IO + Job())
-    lateinit var form: Form
+    private var formResource: Int? = null
+    private var textFieldResource: Int = 0
+    private var submitButtonFieldResource: Int = 0
+    private val callbacks: FormCallbacks by lazy { attachCallbacks() as FormCallbacks }
+    private val coroutineContext = CoroutineScope(Dispatchers.IO + Job())
+    private lateinit var form: Form
 
 
     init {
@@ -76,10 +76,10 @@ class FormView @JvmOverloads constructor(
             else -> null
         }
         return ctx?.let {
-            if (navHostFragmentId != 0) {
+            if (fragmentId != 0) {
                 //look for a formview with the id through all of the the fragments in this activity
                 val fragment =
-                    it.supportFragmentManager.findFragmentById(navHostFragmentId)
+                    it.supportFragmentManager.findFragmentById(fragmentId)
                 if (fragment != null) {
                     return when (fragment) {
                         is NavHostFragment -> fragment.childFragmentManager.primaryNavigationFragment
@@ -99,7 +99,7 @@ class FormView @JvmOverloads constructor(
     private fun studyAttributes(context: Context, it: AttributeSet) {
         val typedArray = context.theme.obtainStyledAttributes(it, R.styleable.FormView, 0, 0)
         formResource = typedArray.getResourceId(R.styleable.FormView_form, R.raw.form)
-        navHostFragmentId = typedArray.getResourceId(R.styleable.FormView_navHostFragmentId, 0)
+        fragmentId = typedArray.getResourceId(R.styleable.FormView_fragmentId, 0)
         textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
         submitButtonFieldResource = typedArray.getResourceId(R.styleable.FormView_submitButton, 0)
 
