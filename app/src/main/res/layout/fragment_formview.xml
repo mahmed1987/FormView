@@ -16,6 +16,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
         app:cardCornerRadius="7dp"
+        app:cardBackgroundColor="#fff"
         app:form="@raw/form"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView2"

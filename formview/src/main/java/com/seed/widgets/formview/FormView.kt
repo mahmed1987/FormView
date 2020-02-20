@@ -34,7 +34,7 @@ import org.koin.ext.isInt
 class FormView @JvmOverloads constructor(
     context: Context?,
     attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = R.attr.materialCardViewStyle
 ) : MaterialCardView(context, attributeSet, defStyleAttr), View.OnClickListener {
 
 
