@@ -40,13 +40,13 @@ enum class Gravity(val value: Int) {
     @SerializedName("Right")
     RIGHT(5),
 }
-enum class InputType(val value:Int) {
+enum class InputType {
     @SerializedName("Number")
-    NUMBER(2),
+    NUMBER,
     @SerializedName("Phone")
-    PHONE(3),
+    PHONE,
     @SerializedName("TextPassword")
-    TEXT_PASSWORD(128)
+    TEXT_PASSWORD
 }
 
 
