@@ -4,6 +4,7 @@
         <attr name="form" format="reference"/>
         <attr name="fragmentId" format="reference"/>
         <attr name="textfield" format="reference"/>
+        <attr name="dropdown" format="reference"/>
         <attr name="submitButton" format="reference"/>
     </declare-styleable>
 

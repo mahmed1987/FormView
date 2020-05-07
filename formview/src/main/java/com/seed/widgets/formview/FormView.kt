@@ -45,6 +45,7 @@ class FormView @JvmOverloads constructor(
     var formHasErrors = false
     private var formResource: Int? = null
     private var textFieldResource: Int = 0
+    private var dropdownResource: Int = 0
     private var submitButtonFieldResource: Int = 0
     private val callbacks: FormCallbacks by lazy { attachCallbacks() as FormCallbacks }
     private val coroutineContext = CoroutineScope(Dispatchers.IO + Job())
@@ -101,6 +102,7 @@ class FormView @JvmOverloads constructor(
         formResource = typedArray.getResourceId(R.styleable.FormView_form, R.raw.form)
         fragmentId = typedArray.getResourceId(R.styleable.FormView_fragmentId, 0)
         textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
+        dropdownResource = typedArray.getResourceId(R.styleable.FormView_dropdown, 0)
         submitButtonFieldResource = typedArray.getResourceId(R.styleable.FormView_submitButton, 0)
 
     }
@@ -288,10 +290,12 @@ class FormView @JvmOverloads constructor(
     //endregion
     //region DropDownField
     private fun createDropDownField(field: Field) =
-        (inflate(R.layout.form_dropdown) as TextInputLayout).apply {
+        (inflate(if (dropdownResource != 0) dropdownResource else R.layout.form_dropdown) as TextInputLayout).apply {
+            val autoCompleteTextView = this@apply.findViewById<MaterialAutoCompleteTextView>(R.id.autocompleteTv)
+                ?: throw IllegalStateException("Your custom text field resource should have the TextInputEditText id as editText")
             hint = field.hint
             field.tag?.let { tag = it }
-            findViewById<MaterialAutoCompleteTextView>(R.id.autocompleteTv).apply {
+            autoCompleteTextView.apply {
                 coroutineContext.launch {
                     val result = callbacks.requestData(field.tag!!)
                     tag = result
