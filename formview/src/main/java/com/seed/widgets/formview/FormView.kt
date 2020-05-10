@@ -311,10 +311,16 @@ class FormView @JvmOverloads constructor(
                     }
 
                 }
-
-
             }
             addLayoutParams(mediumSpace, field.weight)
+
+            field.validationRule?.let { validationRule ->
+                isErrorEnabled = true
+                autoCompleteTextView.afterTextChanged { value ->
+                    attachValidations(validationRule, value, field)
+                }
+                autoCompleteTextView.setText("") // kick start validation
+            }
         }
 
     //endregion

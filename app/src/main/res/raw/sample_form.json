@@ -59,7 +59,11 @@
         {
           "Type": "DropDown",
           "Tag": "country",
-          "Hint": "Country"
+          "Hint": "Country",
+          "Name": "Country",
+          "ValidationRule": {
+            "Mandatory": true
+          }
         }
       ]
     },
