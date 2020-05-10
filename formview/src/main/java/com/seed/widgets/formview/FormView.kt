@@ -99,7 +99,7 @@ class FormView @JvmOverloads constructor(
 
     private fun studyAttributes(context: Context, it: AttributeSet) {
         val typedArray = context.theme.obtainStyledAttributes(it, R.styleable.FormView, 0, 0)
-        formResource = typedArray.getResourceId(R.styleable.FormView_form, R.raw.form)
+        formResource = typedArray.getResourceId(R.styleable.FormView_form, 0)
         fragmentId = typedArray.getResourceId(R.styleable.FormView_fragmentId, 0)
         textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
         dropdownResource = typedArray.getResourceId(R.styleable.FormView_dropdown, 0)
@@ -123,7 +123,7 @@ class FormView @JvmOverloads constructor(
     }
 
     private fun readJson() =
-        resources.openRawResource(R.raw.form).bufferedReader().use { it.readText() }
+        resources.openRawResource(formResource!!).bufferedReader().use { it.readText() }
 
     //region Clicks
     override fun onClick(v: View?) {
@@ -348,7 +348,7 @@ class FormView @JvmOverloads constructor(
 
             }
         }
-        if (validationRule.mandatory) { // this has the highest precedence when the form has been initiated.
+        if (validationRule.mandatory) { // this has the highest precedence when the sample_form has been initiated.
             if (value.isEmpty())
                 this.error = errorMandatory
             else

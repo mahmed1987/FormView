@@ -27,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:form="@raw/form"
+        app:form="@raw/nada"
         app:cardBackgroundColor="@color/colorSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
