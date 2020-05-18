@@ -9,6 +9,7 @@
     <com.seed.widgets.formview.FormView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/formView"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"

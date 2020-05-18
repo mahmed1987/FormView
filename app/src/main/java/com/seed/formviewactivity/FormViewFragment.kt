@@ -11,6 +11,7 @@ import com.google.android.material.card.MaterialCardView
 import com.seed.widgets.formview.FormView
 import com.seed.widgets.formview.Pair
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_formview.*
 import kotlinx.coroutines.delay
 
 class FormViewFragment :  Fragment(),FormView.FormCallbacks{
@@ -22,6 +23,9 @@ class FormViewFragment :  Fragment(),FormView.FormCallbacks{
         return inflater.inflate(R.layout.fragment_formview,container,false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
         override suspend fun requestData(tag: String): List<Pair<String, String>> {
         return when (tag) {
             "country" -> {

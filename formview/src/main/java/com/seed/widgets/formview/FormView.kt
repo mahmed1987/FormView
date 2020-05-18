@@ -334,7 +334,7 @@ class FormView @JvmOverloads constructor(
         field: Field
     ) {
 
-        val errorMandatory = "${field.name} is mandatory"
+        val errorMandatory = "This field is mandatory"
 
         val lengthSatisfied = maxMinLengthSatisfied(validationRule, value, field)
         if (lengthSatisfied != null)
@@ -419,6 +419,8 @@ class FormView @JvmOverloads constructor(
         }
 
 //endregion
+
+
 
 
     interface FormCallbacks {
