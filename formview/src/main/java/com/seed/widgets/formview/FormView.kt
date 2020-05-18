@@ -247,11 +247,13 @@ class FormView @JvmOverloads constructor(
         (inflate(if (submitButtonFieldResource != 0) submitButtonFieldResource else R.layout.form_button) as MaterialButton).apply {
             setOnClickListener {
                 val result = produceResult()
-                if (result.keys().iterator().asSequence().count() == form.rows.flatMap { it.fields }.filter { it.type != Type.SUBMIT_BUTTON_FIELD && it.type != Type.BUTTON }.count()) {
+                if (result.keys().iterator().asSequence().count() == form.rows.flatMap { it.fields }
+                        .filter { it.type != Type.SUBMIT_BUTTON_FIELD && it.type != Type.BUTTON }
+                        .count()) {
                     callbacks.stitchedResult(result.toString())
                 }
             }
-            text=field.text
+            text = field.text
             addLayoutParams(mediumSpace, field.weight, field.layoutParam)
         }
 
@@ -294,8 +296,9 @@ class FormView @JvmOverloads constructor(
     //region DropDownField
     private fun createDropDownField(field: Field) =
         (inflate(if (dropdownResource != 0) dropdownResource else R.layout.form_dropdown) as TextInputLayout).apply {
-            val autoCompleteTextView = this@apply.findViewById<MaterialAutoCompleteTextView>(R.id.autocompleteTv)
-                ?: throw IllegalStateException("Your custom text field resource should have the TextInputEditText id as editText")
+            val autoCompleteTextView =
+                this@apply.findViewById<MaterialAutoCompleteTextView>(R.id.autocompleteTv)
+                    ?: throw IllegalStateException("Your custom text field resource should have the TextInputEditText id as editText")
             hint = field.hint
             field.tag?.let { tag = it }
             autoCompleteTextView.apply {
@@ -334,7 +337,8 @@ class FormView @JvmOverloads constructor(
         field: Field
     ) {
 
-        val errorMandatory = "This field is mandatory"
+        val errorMandatory =
+            if (field.name!=null) "${field.name} is mandatory" else "This field is mandatory"
 
         val lengthSatisfied = maxMinLengthSatisfied(validationRule, value, field)
         if (lengthSatisfied != null)
@@ -419,8 +423,6 @@ class FormView @JvmOverloads constructor(
         }
 
 //endregion
-
-
 
 
     interface FormCallbacks {

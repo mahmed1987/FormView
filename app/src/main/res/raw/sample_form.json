@@ -7,7 +7,6 @@
           "Type": "TextField",
           "Tag": "name",
           "Hint": "Name",
-          "Name": "Name",
           "Text": "Ahmed",
           "Weight": 5,
           "ValidationRule": {
