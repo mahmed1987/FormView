@@ -6,6 +6,7 @@
         <attr name="textfield" format="reference"/>
         <attr name="dropdown" format="reference"/>
         <attr name="submitButton" format="reference"/>
+        <attr name="formTitle" format="string"/>
     </declare-styleable>
 
     <attr name="titleStyle" format="reference" />

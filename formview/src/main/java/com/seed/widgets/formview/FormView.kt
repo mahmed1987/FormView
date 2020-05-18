@@ -46,6 +46,7 @@ class FormView @JvmOverloads constructor(
     private var formResource: Int? = null
     private var textFieldResource: Int = 0
     private var dropdownResource: Int = 0
+    private var title: String? = null
     private var submitButtonFieldResource: Int = 0
     private val callbacks: FormCallbacks by lazy { attachCallbacks() as FormCallbacks }
     private val coroutineContext = CoroutineScope(Dispatchers.IO + Job())
@@ -102,6 +103,7 @@ class FormView @JvmOverloads constructor(
         formResource = typedArray.getResourceId(R.styleable.FormView_form, 0)
         fragmentId = typedArray.getResourceId(R.styleable.FormView_fragmentId, 0)
         textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
+        title = typedArray.getString(R.styleable.FormView_formTitle)
         dropdownResource = typedArray.getResourceId(R.styleable.FormView_dropdown, 0)
         submitButtonFieldResource = typedArray.getResourceId(R.styleable.FormView_submitButton, 0)
 
@@ -134,6 +136,7 @@ class FormView @JvmOverloads constructor(
     private fun createForm() {
         form.run {
             title?.let { formTitle.text = title }
+            this@FormView.title?.let { formTitle.text = it }
             rows.map { row ->
                 createRow().apply {
                     this@FormView.formContainer.addView(this)
@@ -242,13 +245,13 @@ class FormView @JvmOverloads constructor(
     //region SubmitButtonField
     private fun createSubmitButtonField(field: Field) =
         (inflate(if (submitButtonFieldResource != 0) submitButtonFieldResource else R.layout.form_button) as MaterialButton).apply {
-            hint = field.hint
             setOnClickListener {
                 val result = produceResult()
                 if (result.keys().iterator().asSequence().count() == form.rows.flatMap { it.fields }.filter { it.type != Type.SUBMIT_BUTTON_FIELD && it.type != Type.BUTTON }.count()) {
                     callbacks.stitchedResult(result.toString())
                 }
             }
+            text=field.text
             addLayoutParams(mediumSpace, field.weight, field.layoutParam)
         }
 

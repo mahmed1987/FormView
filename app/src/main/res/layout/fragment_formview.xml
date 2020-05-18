@@ -8,11 +8,12 @@
 
     <com.seed.widgets.formview.FormView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        app:formTitle="Ahmed"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
         app:cardCornerRadius="7dp"
