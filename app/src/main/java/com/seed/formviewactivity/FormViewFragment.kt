@@ -46,10 +46,10 @@ class FormViewFragment : Fragment(), FormView.FormCallbacks {
 //                    Row(
 //                        listOf(
 //                            Field(
-//                                name = "N/A",
+//                                name = "Ahmed",
 //                                type = Type.SUBMIT_BUTTON_FIELD,
 //                                text = "Submit dis",
-//                                hint = "N/A",
+//                                hint = "adf",
 //                                inputType = null,
 //                                layoutParam = LayoutParam(Gravity.RIGHT,width = Width.WRAP_CONTENT,margins = null),
 //                                validationRule = null,
