@@ -26,7 +26,7 @@ class FormViewFragment : Fragment(), FormView.FormCallbacks {
         super.onViewCreated(view, savedInstanceState)
 //        formView.createForm(
 //            Form(
-//                "NewForm", 20, listOf(
+//                "NewForm", 10, listOf(
 //                    Row(
 //                        listOf(
 //                            Field(
@@ -58,7 +58,7 @@ class FormViewFragment : Fragment(), FormView.FormCallbacks {
 //                                weight = null
 //                            )
 //                        )
-//                    )
+//                    )s
 //                )
 //            )
 //        )

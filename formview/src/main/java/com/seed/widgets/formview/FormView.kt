@@ -116,10 +116,6 @@ class FormView @JvmOverloads constructor(
                     .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                     .create()
                     .fromJson(readJson(), Form::class.java)
-
-                form.padding?.let {
-                    formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx())
-                }
                 createForm()
             }
 
@@ -142,6 +138,7 @@ class FormView @JvmOverloads constructor(
     //region Form
     private fun createForm() {
         form.run {
+            padding?.let { formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx()) }
             title?.let { formTitle.text = title }
             this@FormView.title?.let { formTitle.text = it }
             rows.map { row ->
