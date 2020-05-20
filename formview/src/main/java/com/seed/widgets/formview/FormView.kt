@@ -100,7 +100,7 @@ class FormView @JvmOverloads constructor(
 
     private fun studyAttributes(context: Context, it: AttributeSet) {
         val typedArray = context.theme.obtainStyledAttributes(it, R.styleable.FormView, 0, 0)
-        formResource = typedArray.getResourceId(R.styleable.FormView_form, 0)
+        formResource = typedArray.getResourceId(R.styleable.FormView_form, -1)
         fragmentId = typedArray.getResourceId(R.styleable.FormView_fragmentId, 0)
         textFieldResource = typedArray.getResourceId(R.styleable.FormView_textfield, 0)
         title = typedArray.getString(R.styleable.FormView_formTitle)
@@ -111,17 +111,24 @@ class FormView @JvmOverloads constructor(
 
     private fun designCard(context: Context) {
         formResource?.let {
-            form = GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create()
-                .fromJson(readJson(), Form::class.java)
+            if (formResource != -1) {
+                form = GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create()
+                    .fromJson(readJson(), Form::class.java)
 
-            form.padding?.let {
-                formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx())
+                form.padding?.let {
+                    formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx())
+                }
+                createForm()
             }
-            createForm()
 
         }
+    }
+
+    fun createForm(form: Form) {
+        this.form = form
+        createForm()
     }
 
     private fun readJson() =
@@ -338,7 +345,7 @@ class FormView @JvmOverloads constructor(
     ) {
 
         val errorMandatory =
-            if (field.name!=null) "${field.name} is mandatory" else "This field is mandatory"
+            if (field.name != null) "${field.name} is mandatory" else "This field is mandatory"
 
         val lengthSatisfied = maxMinLengthSatisfied(validationRule, value, field)
         if (lengthSatisfied != null)
