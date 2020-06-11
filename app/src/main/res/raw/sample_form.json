@@ -22,11 +22,7 @@
           "Weight": 5,
           "InputType": "Number",
           "ValidationRule": {
-            "Mandatory": true,
-            "MinValue": 102,
-            "MaxValue": 5555,
-            "MinLength": 3,
-            "MaxLength": 4
+            "Mandatory": true
           }
         }
       ]

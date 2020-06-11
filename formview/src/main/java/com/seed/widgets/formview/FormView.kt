@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.form_template.view.*
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import org.koin.ext.isInt
+import kotlin.system.measureTimeMillis
 
 
 class FormView @JvmOverloads constructor(
@@ -141,18 +143,22 @@ class FormView @JvmOverloads constructor(
             padding?.let { formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx()) }
             title?.let { formTitle.text = title }
             this@FormView.title?.let { formTitle.text = it }
-            rows.map { row ->
-                createRow().apply {
-                    this@FormView.formContainer.addView(this)
-                    //does this row has more than one field?
-                    row.fields.map {
-                        if (it.weight != null)
-                            this.addView(createField(it))
-                        else
-                            this@FormView.formContainer.addView(createField(it))
+            val time = measureTimeMillis {
+                rows.map { row ->
+                    createRow().apply {
+                        this@FormView.formContainer.addView(this)
+                        //does this row has more than one field?
+                        row.fields.map {
+                            if (it.weight != null)
+                                this.addView(createField(it))
+                            else
+                                this@FormView.formContainer.addView(createField(it))
+                        }
                     }
                 }
+
             }
+            Log.d("FormView-Completed In",time.toString())
 
         }
     }

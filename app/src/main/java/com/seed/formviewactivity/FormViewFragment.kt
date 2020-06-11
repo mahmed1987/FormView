@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.card.MaterialCardView
 import com.seed.widgets.formview.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +25,7 @@ class FormViewFragment : Fragment(), FormView.FormCallbacks {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 //        formView.createForm(
 //            Form(
 //                "NewForm", 10, listOf(
@@ -84,6 +86,7 @@ class FormViewFragment : Fragment(), FormView.FormCallbacks {
             context, tag, Toast
                 .LENGTH_LONG
         ).show()
+
 
     }
 }
