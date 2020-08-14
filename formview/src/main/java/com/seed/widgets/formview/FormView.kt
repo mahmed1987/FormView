@@ -158,7 +158,7 @@ class FormView @JvmOverloads constructor(
                 }
 
             }
-            Log.d("FormView-Completed In",time.toString())
+            Log.d("FormView-Completed In", time.toString())
 
         }
     }
@@ -190,6 +190,8 @@ class FormView @JvmOverloads constructor(
             hint = field.hint
             field.tag?.let { tag = it }
             addLayoutParams(mediumSpace, field.weight)
+            field.text?.let { editText.setText(it) }
+
 
             field.inputType?.let {
                 editText.inputType = when (it) {
@@ -208,7 +210,8 @@ class FormView @JvmOverloads constructor(
                 editText.afterTextChanged { value ->
                     attachValidations(validationRule, value, field)
                 }
-                editText.setText("") // kick start validation
+                if (editText.text.isEmpty())
+                    editText.setText("") // kick start validation
             }
         }
 

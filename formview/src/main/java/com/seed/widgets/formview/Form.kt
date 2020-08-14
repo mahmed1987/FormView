@@ -6,7 +6,7 @@ data class Form(val title: String?, val padding: Int?, val rows: List<Row>)
 data class Row(val fields: List<Field>)
 data class Field(
     val type: Type,
-    val text: String,
+    val text: String?,
     val name: String,
     val tag: String?,
     val hint: String,
