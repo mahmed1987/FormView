@@ -9,6 +9,7 @@ data class Field(
     val text: String?,
     val name: String,
     val dropDownSelectedId: String?=null,
+    val dropDownSelectedValue: String?=null,
     val tag: String?,
     val hint: String,
     val weight: Int?,

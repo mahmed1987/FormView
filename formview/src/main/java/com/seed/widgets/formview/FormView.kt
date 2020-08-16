@@ -327,9 +327,7 @@ class FormView @JvmOverloads constructor(
                             result
                         )
                         setAdapter(adapter)
-                        result.firstOrNull { it.first == field.dropDownSelectedId }?.let {
-                            autoCompleteTextView.setText(it.second)
-                        }
+                        autoCompleteTextView.setText(field.dropDownSelectedValue)
 
                     }
 
