@@ -327,18 +327,22 @@ class FormView @JvmOverloads constructor(
                             result
                         )
                         setAdapter(adapter)
+                        result.firstOrNull { it.first == field.dropDownSelectedId }?.let {
+                            autoCompleteTextView.setText(it.second)
+                        }
+
                     }
 
                 }
             }
             addLayoutParams(mediumSpace, field.weight)
-
             field.validationRule?.let { validationRule ->
                 isErrorEnabled = true
                 autoCompleteTextView.afterTextChanged { value ->
                     attachValidations(validationRule, value, field)
                 }
-                autoCompleteTextView.setText("") // kick start validation
+                if (autoCompleteTextView.text.isEmpty())
+                    autoCompleteTextView.setText("") // kick start validation
             }
         }
 
