@@ -55,7 +55,7 @@
           "Tag": "country",
           "Hint": "Country",
           "Name": "Country",
-          "DropDownSelectedValue": "2",
+          "DropDownSelectedValue": "United States",
           "ValidationRule": {
             "Mandatory": true
           }

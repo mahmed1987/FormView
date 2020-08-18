@@ -284,7 +284,10 @@ class FormView @JvmOverloads constructor(
                     Pair(
                         view.tag.toString(),
                         when (val view =
-                            ((view.children.first() as FrameLayout).children.first())) {
+                            ((view.children.first() as FrameLayout)
+                                .children
+                                .filter { it is TextInputEditText || it is MaterialAutoCompleteTextView}
+                                .first())) {
                             is TextInputEditText -> {
                                 view.text.toString()
                             }
