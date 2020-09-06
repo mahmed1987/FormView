@@ -27,8 +27,8 @@
 
 
     <style name="ThemeOverLayForm" parent="@style/ThemeOverlay.MaterialComponents">
-        <item name="colorSurface">#fff</item>
-
+        <item name="colorSurface">@color/colorTertiary</item>
+        <item name="colorPrimary">@color/colorSecondary</item>
     </style>
 
 
