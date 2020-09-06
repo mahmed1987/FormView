@@ -143,9 +143,6 @@ class FormView @JvmOverloads constructor(
             padding?.let { formContainer.setPadding(it.toPx(), it.toPx(), it.toPx(), it.toPx()) }
             title?.let { formTitle.text = title }
             this@FormView.title?.let { formTitle.text = it }
-            if (title.isNullOrBlank() && this@FormView.title.isNullOrBlank()) {
-                formTitle.visibility=View.GONE
-            }
             val time = measureTimeMillis {
                 rows.map { row ->
                     createRow().apply {
@@ -289,7 +286,7 @@ class FormView @JvmOverloads constructor(
                         when (val view =
                             ((view.children.first() as FrameLayout)
                                 .children
-                                .filter { it is TextInputEditText || it is MaterialAutoCompleteTextView }
+                                .filter { it is TextInputEditText || it is MaterialAutoCompleteTextView}
                                 .first())) {
                             is TextInputEditText -> {
                                 view.text.toString()
